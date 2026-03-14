@@ -2,33 +2,22 @@ package habit
 
 import (
 	"context"
-	"strings"
-	"time"
-
-	"github.com/google/uuid"
-	"github.com/itsfarhan/routine-tracker/api"
+	"fmt"
 )
 
-// CreateHabit is the endpoint that registers a habit.
-func (s *Server) CreateHabit(_ context.Context, request *api.CreateHabitRequest) (*api.CreateHabitResponse, error) {
-
-	s.lgr.Logf("CreateHabit request received: %s", request)
-	return &api.CreateHabitResponse{Habit: &api.Habit{}}, nil
+//go:generate minimock -i habitCreator -s "_mock.go" -o "mocks"
+type habitCreator interface {
+	Add(ctx context.Context, habit Habit) error
 }
 
-func validateAndCompleteHabit(h Habit) (Habit, error) {
-	h.Name = Name(strings.TrimSpace(string(h.Name)))
-	if h.Name == "" {
-		return Habit{}, InvalidInputError{field: "name", reason: "cannot be empty"}
+func Create(ctx context.Context, db habitCreator, h Habit) (Habit, error) {
+	h, err := validateAndCompleteHabit(h)
+	if err != nil {
+		return Habit{}, err
 	}
-	if h.WeeklyFrequency == 0 {
-		h.WeeklyFrequency = 1 // default
-	}
-	if h.ID == "" {
-		h.ID = ID(uuid.NewString())
-	}
-	if h.CreationTime.IsZero() {
-		h.CreationTime = time.Now()
+	err = db.Add(ctx, h)
+	if err != nil {
+		return Habit{}, fmt.Errorf("cannot save habit: %w", err)
 	}
 	return h, nil
 }
