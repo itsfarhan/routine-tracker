@@ -22,11 +22,9 @@ const (
 )
 
 type CreateHabitRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the new habit. Cannot be empty.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Weekly target. Defaults to 1 if omitted.
-	WeeklyFrequency *int32 `protobuf:"varint,2,opt,name=weekly_frequency,json=weeklyFrequency,proto3,oneof" json:"weekly_frequency,omitempty"`
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Name            string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	WeeklyFrequency *int32                 `protobuf:"varint,2,opt,name=weekly_frequency,json=weeklyFrequency,proto3,oneof" json:"weekly_frequency,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -119,19 +117,188 @@ func (x *CreateHabitResponse) GetHabit() *Habit {
 	return nil
 }
 
+type ListHabitsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHabitsRequest) Reset() {
+	*x = ListHabitsRequest{}
+	mi := &file_service_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHabitsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHabitsRequest) ProtoMessage() {}
+
+func (x *ListHabitsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHabitsRequest.ProtoReflect.Descriptor instead.
+func (*ListHabitsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{2}
+}
+
+type ListHabitsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Habits        []*Habit               `protobuf:"bytes,1,rep,name=habits,proto3" json:"habits,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHabitsResponse) Reset() {
+	*x = ListHabitsResponse{}
+	mi := &file_service_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHabitsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHabitsResponse) ProtoMessage() {}
+
+func (x *ListHabitsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHabitsResponse.ProtoReflect.Descriptor instead.
+func (*ListHabitsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListHabitsResponse) GetHabits() []*Habit {
+	if x != nil {
+		return x.Habits
+	}
+	return nil
+}
+
+type TickHabitRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	HabitId       string                 `protobuf:"bytes,1,opt,name=habit_id,json=habitId,proto3" json:"habit_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TickHabitRequest) Reset() {
+	*x = TickHabitRequest{}
+	mi := &file_service_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TickHabitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TickHabitRequest) ProtoMessage() {}
+
+func (x *TickHabitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TickHabitRequest.ProtoReflect.Descriptor instead.
+func (*TickHabitRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *TickHabitRequest) GetHabitId() string {
+	if x != nil {
+		return x.HabitId
+	}
+	return ""
+}
+
+type TickHabitResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TickHabitResponse) Reset() {
+	*x = TickHabitResponse{}
+	mi := &file_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TickHabitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TickHabitResponse) ProtoMessage() {}
+
+func (x *TickHabitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TickHabitResponse.ProtoReflect.Descriptor instead.
+func (*TickHabitResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{5}
+}
+
 var File_service_proto protoreflect.FileDescriptor
 
 const file_service_proto_rawDesc = "" +
 	"\n" +
-	"\rservice.proto\x12\x06habits\x1a\vhabit.proto\"m\n" +
+	"\rservice.proto\x12\x05habit\x1a\vhabit.proto\"m\n" +
 	"\x12CreateHabitRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12.\n" +
 	"\x10weekly_frequency\x18\x02 \x01(\x05H\x00R\x0fweeklyFrequency\x88\x01\x01B\x13\n" +
-	"\x11_weekly_frequency\":\n" +
-	"\x13CreateHabitResponse\x12#\n" +
-	"\x05habit\x18\x01 \x01(\v2\r.habits.HabitR\x05habit2P\n" +
-	"\x06Habits\x12F\n" +
-	"\vCreateHabit\x12\x1a.habits.CreateHabitRequest\x1a\x1b.habits.CreateHabitResponseB*Z(github.com/th3uns33n/routine-tracker/apib\x06proto3"
+	"\x11_weekly_frequency\"9\n" +
+	"\x13CreateHabitResponse\x12\"\n" +
+	"\x05habit\x18\x01 \x01(\v2\f.habit.HabitR\x05habit\"\x13\n" +
+	"\x11ListHabitsRequest\":\n" +
+	"\x12ListHabitsResponse\x12$\n" +
+	"\x06habits\x18\x01 \x03(\v2\f.habit.HabitR\x06habits\"-\n" +
+	"\x10TickHabitRequest\x12\x19\n" +
+	"\bhabit_id\x18\x01 \x01(\tR\ahabitId\"\x13\n" +
+	"\x11TickHabitResponse2\xd1\x01\n" +
+	"\x06Habits\x12D\n" +
+	"\vCreateHabit\x12\x19.habit.CreateHabitRequest\x1a\x1a.habit.CreateHabitResponse\x12A\n" +
+	"\n" +
+	"ListHabits\x12\x18.habit.ListHabitsRequest\x1a\x19.habit.ListHabitsResponse\x12>\n" +
+	"\tTickHabit\x12\x17.habit.TickHabitRequest\x1a\x18.habit.TickHabitResponseB*Z(github.com/itsfarhan/routine-tracker/apib\x06proto3"
 
 var (
 	file_service_proto_rawDescOnce sync.Once
@@ -145,21 +312,30 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_service_proto_goTypes = []any{
-	(*CreateHabitRequest)(nil),  // 0: habits.CreateHabitRequest
-	(*CreateHabitResponse)(nil), // 1: habits.CreateHabitResponse
-	(*Habit)(nil),               // 2: habits.Habit
+	(*CreateHabitRequest)(nil),  // 0: habit.CreateHabitRequest
+	(*CreateHabitResponse)(nil), // 1: habit.CreateHabitResponse
+	(*ListHabitsRequest)(nil),   // 2: habit.ListHabitsRequest
+	(*ListHabitsResponse)(nil),  // 3: habit.ListHabitsResponse
+	(*TickHabitRequest)(nil),    // 4: habit.TickHabitRequest
+	(*TickHabitResponse)(nil),   // 5: habit.TickHabitResponse
+	(*Habit)(nil),               // 6: habit.Habit
 }
 var file_service_proto_depIdxs = []int32{
-	2, // 0: habits.CreateHabitResponse.habit:type_name -> habits.Habit
-	0, // 1: habits.Habits.CreateHabit:input_type -> habits.CreateHabitRequest
-	1, // 2: habits.Habits.CreateHabit:output_type -> habits.CreateHabitResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	6, // 0: habit.CreateHabitResponse.habit:type_name -> habit.Habit
+	6, // 1: habit.ListHabitsResponse.habits:type_name -> habit.Habit
+	0, // 2: habit.Habits.CreateHabit:input_type -> habit.CreateHabitRequest
+	2, // 3: habit.Habits.ListHabits:input_type -> habit.ListHabitsRequest
+	4, // 4: habit.Habits.TickHabit:input_type -> habit.TickHabitRequest
+	1, // 5: habit.Habits.CreateHabit:output_type -> habit.CreateHabitResponse
+	3, // 6: habit.Habits.ListHabits:output_type -> habit.ListHabitsResponse
+	5, // 7: habit.Habits.TickHabit:output_type -> habit.TickHabitResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_service_proto_init() }
@@ -175,7 +351,7 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_service_proto_rawDesc), len(file_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -90,11 +90,11 @@ var File_habit_proto protoreflect.FileDescriptor
 
 const file_habit_proto_rawDesc = "" +
 	"\n" +
-	"\vhabit.proto\x12\x06habits\"V\n" +
+	"\vhabit.proto\x12\x05habit\"V\n" +
 	"\x05Habit\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12)\n" +
-	"\x10weekly_frequency\x18\x03 \x01(\x05R\x0fweeklyFrequencyB*Z(github.com/th3uns33n/routine-tracker/apib\x06proto3"
+	"\x10weekly_frequency\x18\x03 \x01(\x05R\x0fweeklyFrequencyB*Z(github.com/itsfarhan/routine-tracker/apib\x06proto3"
 
 var (
 	file_habit_proto_rawDescOnce sync.Once
@@ -110,7 +110,7 @@ func file_habit_proto_rawDescGZIP() []byte {
 
 var file_habit_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_habit_proto_goTypes = []any{
-	(*Habit)(nil), // 0: habits.Habit
+	(*Habit)(nil), // 0: habit.Habit
 }
 var file_habit_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

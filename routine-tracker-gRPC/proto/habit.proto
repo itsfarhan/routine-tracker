@@ -1,7 +1,7 @@
 syntax = "proto3";
-package habits;
+package habit;
 
-option go_package = "github.com/itsfarhan/routine-tracker";
+option go_package = "github.com/itsfarhan/routine-tracker/api";
 
 // Habit represents an objective one wants to complete
 // a given number of times per week.

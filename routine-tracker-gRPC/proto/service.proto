@@ -1,23 +1,22 @@
 syntax = "proto3";
-package habits;
-
+package habit;
 import "habit.proto";
+option go_package = "github.com/itsfarhan/routine-tracker/api";
 
-option go_package = "github.com/itsfarhan/routine-tracker";
-
-// Habits is the gRPC service for registering and tracking habits.
 service Habits {
-  // CreateHabit registers a new habit.
   rpc CreateHabit(CreateHabitRequest) returns (CreateHabitResponse);
+  rpc ListHabits(ListHabitsRequest)   returns (ListHabitsResponse);   // add in 10.5
+  rpc TickHabit(TickHabitRequest)     returns (TickHabitResponse);    // add in 10.7
 }
 
 message CreateHabitRequest {
-  // Name of the new habit. Cannot be empty.
   string name = 1;
-  // Weekly target. Defaults to 1 if omitted.
   optional int32 weekly_frequency = 2;
 }
+message CreateHabitResponse { Habit habit = 1; }
 
-message CreateHabitResponse {
-  Habit habit = 1;
-}
+message ListHabitsRequest {}
+message ListHabitsResponse { repeated Habit habits = 1; }  // repeated = slice
+
+message TickHabitRequest  { string habit_id = 1; }
+message TickHabitResponse {}   // empty on purpose — can grow later
